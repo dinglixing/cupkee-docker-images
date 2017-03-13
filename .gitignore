@@ -1,0 +1,5 @@
+# cupkee docker images
+
+*.tar.gz
+*.tar.bz2
+
