@@ -1,4 +1,4 @@
-FROM cupkee/env-base:latest
+FROM cupkee/env-base:1.00
 
 COPY cupkee_utils /usr/local/bin/
 COPY cupkee_docker_entrypoint.sh /usr/local/bin

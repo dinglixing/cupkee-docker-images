@@ -24,5 +24,15 @@ RUN groupadd -r cupkee && useradd -r -g cupkee cupkee && \
     npm cache clear && \
     npm i -g js-yaml
 
+# add i386 libs for gcc-arm-none-eabi(i386)
+RUN dpkg --add-architecture i386 && \
+    apt-get -y update && \
+    apt-get -y install lib32z1 lib32ncurses5 libbz2-1.0:i386
+
+# set user home && env
+RUN mkdir -p /home/cupkee && \
+    echo "export PATH=\$PATH:/usr/local/bin/gcc-arm-none-eabi-5_4-2016q3/bin:/usr/local/bin/cupkee_utils" >> /home/cupkee/.bashrc && \
+    chown -R cupkee.cupkee /home/cupkee
+
 CMD ["node"]
 
